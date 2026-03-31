@@ -3,10 +3,10 @@ import pathlib
 import anywidget
 import traitlets
 
-bundler_assets_dir = pathlib.Path(__file__).parent / "static" / "assets"
+bundler_assets_dir = pathlib.Path(__file__).parent / "static"
 
 
 class Widget(anywidget.AnyWidget):
-    _esm = bundler_assets_dir / "index.js"
+    _esm = bundler_assets_dir / "main.js"
     _css = bundler_assets_dir / "ipyfoo.css"
     value = traitlets.Int(0).tag(sync=True)

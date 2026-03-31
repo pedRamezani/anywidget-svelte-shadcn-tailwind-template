@@ -1,5 +1,5 @@
 <script>
-	import './widget.css';
+	import './app.css';
 
 	/** @type {{ bindings: { value: number }}}*/
 	let { bindings } = $props();

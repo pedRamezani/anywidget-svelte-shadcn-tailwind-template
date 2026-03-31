@@ -1,4 +1,4 @@
-# ipyfoo-svelte
+# ipyfoo
 
 An template for authoring [anywidget](http://anywidget.dev) with Svelte 5.
 

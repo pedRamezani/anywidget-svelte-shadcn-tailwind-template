@@ -1,43 +1,7 @@
 {
-	"compilerOptions": {
-		"rootDirs": ["."],
-		"verbatimModuleSyntax": true,
-		"isolatedModules": true,
-		"lib": ["esnext", "DOM", "DOM.Iterable"],
-		"module": "esnext",
-		"noEmit": true,
-		"target": "esnext",
-		"rewriteRelativeImportExtensions": true,
-		"allowJs": true,
-		"checkJs": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"strict": true,
-		"moduleResolution": "bundler"
-	},
-	"include": [
-		"./vite.config.js",
-		"./vite.config.ts",
-		"./web/**/*.js",
-		"./web/**/*.ts",
-		"./web/**/*.svelte",
-		"./test/**/*.js",
-		"./test/**/*.ts",
-		"./test/**/*.svelte",
-		"./tests/**/*.js",
-		"./tests/**/*.ts",
-		"./tests/**/*.svelte"
-	],
-	"exclude": [
-		"./node_modules/**",
-		"./web/service-worker.js",
-		"./web/service-worker/**/*.js",
-		"./web/service-worker.ts",
-		"./web/service-worker/**/*.ts",
-		"./web/service-worker.d.ts",
-		"./web/service-worker/**/*.d.ts"
-	]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
