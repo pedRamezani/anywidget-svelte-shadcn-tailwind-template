@@ -1,10 +1,13 @@
-<script>
+<script lang="ts">
+	import { Button } from '$lib/components/ui/button/index';
+	import { PlusIcon } from '@lucide/svelte';
 	import './app.css';
 
 	/** @type {{ bindings: { value: number }}}*/
 	let { bindings } = $props();
 </script>
 
-<button class="w-sm rounded-sm bg-red-500 p-2 text-xl text-red-50" onclick={() => bindings.value++}
-	>Count is {bindings.value}</button
->
+<Button onclick={() => bindings.value++} class="my-2">
+	<PlusIcon />
+	Count is {bindings.value}
+</Button>
