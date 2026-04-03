@@ -3,8 +3,7 @@
 	import { PlusIcon } from '@lucide/svelte';
 	import './app.css';
 
-	/** @type {{ bindings: { value: number }}}*/
-	let { bindings } = $props();
+	let { bindings }: { bindings: { value: number } } = $props();
 </script>
 
 <Button onclick={() => bindings.value++} class="my-2">

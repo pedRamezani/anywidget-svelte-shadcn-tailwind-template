@@ -1,10 +1,9 @@
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, type UserConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import path from 'path/win32';
 
-// https://vite.dev/config/
-export default defineConfig({
+export const baseConfig: UserConfig = {
     resolve: {
         alias: {
             $lib: path.resolve("./src/lib").replaceAll("\\", "/"),
@@ -26,4 +25,7 @@ export default defineConfig({
 			}
 		}
 	}
-});
+}
+
+// https://vite.dev/config/
+export default defineConfig(baseConfig);
