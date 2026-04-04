@@ -6,6 +6,7 @@ export default defineConfig({
     ...baseConfig,
     build: {
         ...baseConfig.build,
+        sourcemap: 'inline',
         watch: {
             include: 'src/**',
             exclude: [

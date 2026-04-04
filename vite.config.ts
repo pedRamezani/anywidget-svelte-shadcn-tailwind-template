@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, type UserConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
-import path from 'path/win32';
+import path from 'path';
 
 export const baseConfig: UserConfig = {
     resolve: {
@@ -15,6 +15,7 @@ export const baseConfig: UserConfig = {
 		outDir: './py/ipyfoo/static/',
         lib: {
             entry: ["./src/main.ts"],
+            cssFileName: "main",
             formats: ["es"],
         },
 		rollupOptions: {
