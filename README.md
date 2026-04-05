@@ -9,7 +9,7 @@ Development requires [`uv`](https://github.com/astral-sh/uv) and
 
 ```sh
 uv venv
-uv pip install -e ".[dev]"
+uv pip install -e . --group dev
 pnpm dev # start a development server
 uv run jupyter lab notebooks/example.ipynb
 ```
