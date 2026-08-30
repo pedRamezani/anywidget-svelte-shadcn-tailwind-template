@@ -15,16 +15,36 @@ requires-python=">=3.9"
 dev = ["watchfiles", "jupyterlab"]
 
 [tool.hatch.build]
+dev-mode-dirs = ["py"]
 only-packages = true
 packages = ["py/ipyfoo"]
 artifacts = ["py/ipyfoo/static/*"]
 
-[tool.hatch.build.hooks.jupyter-builder]
+# The npm build runs for the sdist only. `uv build` produces the sdist from this
+# tree (where package.json exists) and then builds the wheel from the unpacked
+# sdist (where it does not), so a hook registered for both targets fails on the
+# second step.
+#
+# There is deliberately no `skip-if-exists`: the dev and production vite configs
+# share an outDir, and skipping would package a stale `pnpm dev` bundle
+# (unminified, inline sourcemap, several times larger) in place of a real build.
+# The wheel step does not need it because it has no hook to skip, and
+# `vite.config.ts` sets `emptyOutDir` so every production build starts clean.
+[tool.hatch.build.targets.sdist.hooks.jupyter-builder]
 build-function = "hatch_jupyter_builder.npm_builder"
-ensured-targets = ["py/ipyfoo/static/main.js"]
-skip-if-exists = ["py/ipyfoo/static/main.js"]
+ensured-targets = [
+    "py/ipyfoo/static/main.js",
+    "py/ipyfoo/static/main.css",
+]
 dependencies = ["hatch-jupyter-builder>=0.5.0"]
 
-[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+[tool.hatch.build.targets.sdist.hooks.jupyter-builder.build-kwargs]
 npm = "npm"
 build_cmd = "build"
+
+# The sdist flattens `py/ipyfoo/` to `ipyfoo/` at its root, so the
+# wheel-from-sdist step needs the post-flattening path. Both are listed so that
+# building a wheel directly from this tree works too.
+[tool.hatch.build.targets.wheel]
+packages = ["py/ipyfoo", "ipyfoo"]
+artifacts = ["ipyfoo/static/*", "py/ipyfoo/static/*"]

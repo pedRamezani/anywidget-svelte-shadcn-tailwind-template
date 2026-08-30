@@ -13,6 +13,9 @@ export const baseConfig: UserConfig = {
     build: {
         assetsDir: '',
 		outDir: './py/ipyfoo/static/',
+		// Start every production build from an empty directory, so a stale
+		// `pnpm dev` bundle can never survive into a release.
+		emptyOutDir: true,
         lib: {
             entry: ["./src/main.ts"],
             cssFileName: "main",

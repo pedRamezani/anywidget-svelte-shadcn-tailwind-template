@@ -7,6 +7,8 @@ export default defineConfig({
     build: {
         ...baseConfig.build,
         sourcemap: 'inline',
+        // Keep watch rebuilds from wiping the output dir each time.
+        emptyOutDir: false,
         watch: {
             include: 'src/**',
             exclude: [
