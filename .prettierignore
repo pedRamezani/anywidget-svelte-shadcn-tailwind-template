@@ -1,4 +1,8 @@
-# Package Managers
+# Package Managers. package.json is included because npm rewrites it itself on
+# every install, mirroring its indentation into package-lock.json -- letting
+# prettier reformat it means the two tools fight and the lockfile churns by
+# thousands of lines.
+package.json
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
@@ -7,3 +11,7 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Vendored from the shadcn-svelte-extras registry via jsrepo. Reformatting these
+# would produce a large diff every time a component is re-fetched or updated.
+src/lib/components/ui/

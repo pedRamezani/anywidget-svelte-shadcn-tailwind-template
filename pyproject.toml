@@ -47,4 +47,7 @@ build_cmd = "build"
 # building a wheel directly from this tree works too.
 [tool.hatch.build.targets.wheel]
 packages = ["py/ipyfoo", "ipyfoo"]
-artifacts = ["ipyfoo/static/*", "py/ipyfoo/static/*"]
+# Name-independent on purpose: `artifacts` is the line a rename most easily
+# misses, and missing it yields a wheel that installs cleanly with no frontend
+# in it at all.
+artifacts = ["*/static/*", "py/*/static/*"]
